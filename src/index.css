@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --accent: #00FF7F;
+  --accent-dim: #00CC66;
+  --ai: #00D4FF;
+  --bg: #0A0A0A;
+  --surface: #111111;
+  --surface-elevated: #1A1A1A;
+  --border: #2A2A2A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A3A3A;
+}
+
+@layer components {
+  .btn-accent {
+    @apply bg-accent text-black font-semibold px-4 py-2 rounded-lg transition-all duration-150 hover:bg-accent-dim hover:shadow-accent-sm active:scale-95;
+  }
+
+  .btn-outline {
+    @apply border border-surface-border text-white font-medium px-4 py-2 rounded-lg transition-all duration-150 hover:bg-surface-hover hover:border-zinc-600 active:scale-95;
+  }
+
+  .btn-ai {
+    @apply bg-ai text-black font-semibold px-4 py-2 rounded-lg transition-all duration-150 hover:shadow-ai active:scale-95;
+  }
+
+  .card {
+    @apply bg-surface-elevated rounded-xl border border-surface-border shadow-card;
+  }
+
+  .stream-card {
+    @apply relative rounded-xl overflow-hidden cursor-pointer transition-all duration-200 hover:scale-[1.02] hover:shadow-card;
+  }
+
+  .badge-live {
+    @apply bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded uppercase tracking-wide;
+  }
+
+  .badge-ai {
+    @apply bg-ai/20 text-ai text-xs font-semibold px-2 py-0.5 rounded-full border border-ai/30;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-zinc-400 font-medium text-sm transition-all duration-150 hover:bg-surface-hover hover:text-white cursor-pointer;
+  }
+
+  .sidebar-link.active {
+    @apply bg-accent-muted text-accent;
+  }
+
+  .input-dark {
+    @apply bg-surface border border-surface-border rounded-lg px-3 py-2 text-white text-sm placeholder-zinc-500 focus:outline-none focus:border-accent/50 transition-colors;
+  }
+
+  .tag {
+    @apply text-xs font-medium px-2.5 py-1 rounded-full bg-surface-hover text-zinc-400 border border-surface-border hover:border-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer;
+  }
+
+  .stat-card {
+    @apply bg-surface-elevated rounded-xl p-4 border border-surface-border;
+  }
+}
+
+.accent-glow {
+  box-shadow: 0 0 20px rgba(0, 255, 127, 0.3);
+}
+
+.ai-glow {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.live-dot {
+  animation: liveBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.chat-message {
+  animation: chatSlide 0.25s ease-out;
+}
+
+@keyframes chatSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-pulse {
+  animation: aiPulse 2s ease-in-out infinite;
+}
+
+@keyframes aiPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.3); }
+  50% { box-shadow: 0 0 24px rgba(0, 212, 255, 0.6); }
+}
+
+.viewer-count-bg {
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+}
+
+.category-card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+
+.featured-gradient {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.1) 100%);
+}
